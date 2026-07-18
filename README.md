@@ -1,11 +1,11 @@
-# Báo cáo Thực nghiệm: Ảnh hưởng của Hàm Kích hoạt
+# So sánh ảnh hưởng của hàm kích hoạt đến quá trình huấn luyện
 
-Đây là mã nguồn thực nghiệm cho bài tập lớn môn **Nhập môn Trí tuệ Nhân tạo**. Dự án được cấu trúc bài bản theo dạng Module Python chuyên nghiệp, nhằm tối ưu hóa tính linh hoạt, khả năng tái sử dụng mã và dễ dàng kiểm soát luồng dữ liệu.
+Đây là mã nguồn cho bài tập lớn môn **Nhập môn Trí tuệ Nhân tạo**. Dự án được cấu trúc bài bản theo dạng Module Python chuyên nghiệp, nhằm tối ưu hóa tính linh hoạt, khả năng tái sử dụng mã và dễ dàng kiểm soát luồng dữ liệu.
 
-Bạn cũng có thể xem và chạy thử trực tiếp phiên bản Notebook của dự án trên Google Colab tại đây:  
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1Viic6NWl_HSJAkP8Xg3HylM8cVvRF4sf)
+Phiên bản Notebook của dự án trên Google Colab tại đây: [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1Viic6NWl_HSJAkP8Xg3HylM8cVvRF4sf)
 
 ## Cấu trúc dự án
+
 - `config.py`: File cấu hình tập trung. Chứa các tham số huấn luyện cốt lõi (Epochs, Batch size, LR) để quản lý cấu hình tập trung.
 - `data_loader.py`: Đóng gói logic tải dữ liệu MNIST và tự động xử lý chia tập Train/Validation.
 - `models.py`: Khởi tạo khối mạng Multi-Layer Perceptron (MLP) và định nghĩa các hàm kích hoạt.
@@ -14,6 +14,7 @@ Bạn cũng có thể xem và chạy thử trực tiếp phiên bản Notebook c
 - `main.py`: File thực thi chính kết nối toàn bộ các module.
 
 ## Hướng dẫn cài đặt và sử dụng
+
 1. Cài đặt các thư viện phụ thuộc:
    ```bash
    pip install -r requirements.txt
