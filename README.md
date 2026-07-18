@@ -1,23 +1,26 @@
 # Báo cáo Thực nghiệm: Ảnh hưởng của Hàm Kích hoạt
 
-Đây là mã nguồn thực nghiệm cho bài tập lớn môn **Nhập môn Trí tuệ Nhân tạo**. Toàn bộ mã nguồn trên Jupyter Notebook ban đầu đã được tái cấu trúc (refactor) thành một dự án Python chuyên nghiệp chuẩn Module nhằm tăng tính linh hoạt, khả năng tái sử dụng và dễ dàng kiểm soát lỗi.
+Đây là mã nguồn thực nghiệm cho bài tập lớn môn **Nhập môn Trí tuệ Nhân tạo**. Dự án được cấu trúc bài bản theo dạng Module Python chuyên nghiệp, nhằm tối ưu hóa tính linh hoạt, khả năng tái sử dụng mã và dễ dàng kiểm soát luồng dữ liệu.
 
-## Cấu trúc Kiến trúc dự án
-- `config.py`: File cấu hình tập trung. Chứa các tham số huấn luyện cốt lõi (Epochs, Batch size, LR) để thay đổi nhanh mà không làm hỏng logic.
+Bạn cũng có thể xem và chạy thử trực tiếp phiên bản Notebook của dự án trên Google Colab tại đây:  
+[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1Viic6NWl_HSJAkP8Xg3HylM8cVvRF4sf)
+
+## Cấu trúc dự án
+- `config.py`: File cấu hình tập trung. Chứa các tham số huấn luyện cốt lõi (Epochs, Batch size, LR) để quản lý cấu hình tập trung.
 - `data_loader.py`: Đóng gói logic tải dữ liệu MNIST và tự động xử lý chia tập Train/Validation.
-- `models.py`: Khởi tạo khối mạng Multi-Layer Perceptron (MLP) động và định nghĩa các hàm kích hoạt.
-- `engine.py`: Chứa "động cơ" (vòng lặp huấn luyện), đánh giá mô hình, thu thập số liệu gradient và thống kê Dying ReLU.
-- `visualization.py`: Các script sử dụng Matplotlib/Seaborn hỗ trợ vẽ và tự động lưu biểu đồ đánh giá.
+- `models.py`: Khởi tạo khối mạng Multi-Layer Perceptron (MLP) và định nghĩa các hàm kích hoạt.
+- `engine.py`: Chứa vòng lặp huấn luyện, đánh giá mô hình, thu thập số liệu gradient và thống kê Dying ReLU.
+- `visualization.py`: Các script sử dụng Matplotlib/Seaborn hỗ trợ vẽ đồ thị.
 - `main.py`: File thực thi chính kết nối toàn bộ các module.
 
-## Hướng dẫn sử dụng
-1. Cài đặt các thư viện yêu cầu:
+## Hướng dẫn cài đặt và sử dụng
+1. Cài đặt các thư viện phụ thuộc:
    ```bash
    pip install -r requirements.txt
    ```
-2. Chạy file thực thi chính:
+2. Chạy file thực thi chính để bắt đầu quá trình huấn luyện mô hình:
    ```bash
    python main.py
    ```
 
-*Lưu ý: Sau khi chạy thành công, đồ thị biểu diễn kết quả sẽ được tự động xuất ra thư mục `outputs/` để đính kèm vào báo cáo Word.*
+*Lưu ý: Sau khi tiến trình hoàn tất, các biểu đồ phân tích kết quả sẽ được tự động kết xuất (export) ra thư mục `outputs/`.*
