@@ -5,7 +5,7 @@ from visualization import *
 
 def main():
     train_loader, val_loader, test_loader = get_dataloaders(BATCH_SIZE)
-    
+
     print("--- 1. Mạng nông (3 lớp) ---")
     results_shallow = []
     for act in ['Sigmoid', 'Tanh', 'ReLU']:

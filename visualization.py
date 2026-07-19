@@ -15,7 +15,7 @@ def plot_loss_curves(all_results, title='Quỹ đạo Loss theo Epoch', save_nam
     ensure_out_dir()
     fig, axes = plt.subplots(1, 2, figsize=(16, 6))
     act_names = list(dict.fromkeys(r['activation'] for r in all_results))
-    
+
     for act_name in act_names:
         act_res = [r for r in all_results if r['activation'] == act_name]
         color = COLORS.get(act_name, '#888888')

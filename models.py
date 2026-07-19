@@ -15,7 +15,7 @@ class MLP(nn.Module):
     # Mô hình mạng Multi-Layer Perceptron với khả năng tùy biến cấu trúc
     def __init__(self, input_size, hidden_size, num_hidden_layers, output_size, activation_cls):
         super().__init__()
-        
+    
         layers = []
         in_features = input_size
         
