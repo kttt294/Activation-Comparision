@@ -88,9 +88,10 @@ python main.py
 
 ## Tóm tắt các thực nghiệm cốt lõi
 
-Khi chạy lệnh trên, dự án sẽ tự động sinh ra 5 biểu đồ trực quan (được lưu tại `outputs/`):
+Khi chạy lệnh trên, dự án sẽ tự động sinh ra 7 biểu đồ trực quan (được lưu tại `outputs/`):
 
-1. `fig_01_shallow_loss.png` / `fig_02_shallow_acc.png`: So sánh tốc độ học của Sigmoid, Tanh, ReLU trên kiến trúc mạng 3 lớp ẩn.
-2. `fig_03_dying_loss.png`: Trực quan hóa sự sụp đổ của mạng khi ReLU bị "chết" ở môi trường Learning Rate lớn (0.1), so sánh với sức chịu đựng của Leaky ReLU.
+1. `fig_01_shallow_loss.png` / `fig_02_shallow_acc.png`: So sánh tốc độ học của các hàm kích hoạt (bao gồm cả Leaky ReLU) trên kiến trúc mạng 3 lớp ẩn.
+2. `fig_03_dying_loss.png` / `fig_06_dying_acc.png`: Trực quan hóa sự sụp đổ của mạng khi ReLU bị "chết" ở môi trường Learning Rate lớn (0.1), so sánh với sức chịu đựng của Leaky ReLU.
 3. `fig_04_vanishing_grad.png`: Biểu đồ hình vĩ cầm (Violin Plot) chụp X-quang dòng chảy của Gradient qua 8 lớp ẩn, minh chứng toán học sống động cho sự bốc hơi tín hiệu của Sigmoid/Tanh.
 4. `fig_05_gradient_evo.png`: Theo dõi quỹ đạo sống sót của Gradient ở lớp đầu tiên trong suốt 50 epochs.
+5. `fig_09_shallow_vs_deep.png`: Biểu đồ cột đa biến so sánh toàn diện (Accuracy, Thời gian, Gradient) giữa kiến trúc Mạng Nông và Mạng Sâu.

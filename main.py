@@ -8,7 +8,7 @@ def main():
 
     print("--- 1. Mạng nông (3 lớp) ---")
     results_shallow = []
-    for act in ['Sigmoid', 'Tanh', 'ReLU']:
+    for act in ['Sigmoid', 'Tanh', 'ReLU', 'Leaky ReLU']:
         for seed in SEEDS:
             res = run_training_experiment(act, SHALLOW_LAYERS, SHALLOW_HIDDEN, seed, train_loader, val_loader, test_loader)
             results_shallow.append(res)

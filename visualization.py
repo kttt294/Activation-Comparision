@@ -123,7 +123,7 @@ def plot_shallow_vs_deep_accuracy(results_shallow, results_deep, title='So sánh
     ensure_out_dir()
     fig, axes = plt.subplots(1, 3, figsize=(20, 6))
     
-    act_names = ['Sigmoid', 'Tanh', 'ReLU']
+    act_names = ['Sigmoid', 'Tanh', 'ReLU', 'Leaky ReLU']
     x_pos = np.arange(len(act_names))
     width = 0.35
     
