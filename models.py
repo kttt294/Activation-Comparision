@@ -15,7 +15,6 @@ class MLP(nn.Module):
     # Mô hình mạng Multi-Layer Perceptron với khả năng tùy biến cấu trúc
     def __init__(self, input_size, hidden_size, num_hidden_layers, output_size, activation_cls):
         super().__init__()
-        self.activation = activation_cls()
         
         layers = []
         in_features = input_size
@@ -25,7 +24,7 @@ class MLP(nn.Module):
             linear = nn.Linear(in_features, hidden_size)
             self._init_weights(linear, activation_cls)
             layers.append(linear)
-            layers.append(self.activation)
+            layers.append(activation_cls())
             in_features = hidden_size
             
         # Lớp đầu ra (Không kèm activation để tính Cross-Entropy chuẩn)

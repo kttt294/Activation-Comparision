@@ -118,3 +118,60 @@ def create_summary_table(results):
             'Thời gian trung bình (s)': f"{time_mean:.1f}"
         })
     return pd.DataFrame(summary)
+
+def plot_shallow_vs_deep_accuracy(results_shallow, results_deep, title='So sánh Accuracy: Mạng Nông vs Mạng Sâu', save_name=None):
+    ensure_out_dir()
+    fig, axes = plt.subplots(1, 3, figsize=(20, 6))
+    
+    act_names = ['Sigmoid', 'Tanh', 'ReLU']
+    x_pos = np.arange(len(act_names))
+    width = 0.35
+    
+    # 1) Test Accuracy
+    acc_A = [np.mean([r['test_acc'] for r in results_shallow if r['activation'] == a]) * 100 for a in act_names]
+    acc_B = [np.mean([r['test_acc'] for r in results_deep if r['activation'] == a]) * 100 for a in act_names]
+    std_A = [np.std([r['test_acc'] for r in results_shallow if r['activation'] == a]) * 100 for a in act_names]
+    std_B = [np.std([r['test_acc'] for r in results_deep if r['activation'] == a]) * 100 for a in act_names]
+    
+    axes[0].bar(x_pos - width/2, acc_A, width, yerr=std_A, label='Mạng nông (3 layers)', capsize=5, color='#4c72b0')
+    axes[0].bar(x_pos + width/2, acc_B, width, yerr=std_B, label='Mạng sâu (8 layers)', capsize=5, color='#c44e52')
+    axes[0].set_ylabel('Test Accuracy (%)')
+    axes[0].set_title('Test Accuracy theo Độ sâu mạng')
+    axes[0].set_xticks(x_pos)
+    axes[0].set_xticklabels(act_names)
+    axes[0].legend()
+    axes[0].grid(axis='y', linestyle='--', alpha=0.7)
+    
+    # 2) Training Time
+    time_A = [np.mean([r['time'] for r in results_shallow if r['activation'] == a]) for a in act_names]
+    time_B = [np.mean([r['time'] for r in results_deep if r['activation'] == a]) for a in act_names]
+    std_tA = [np.std([r['time'] for r in results_shallow if r['activation'] == a]) for a in act_names]
+    std_tB = [np.std([r['time'] for r in results_deep if r['activation'] == a]) for a in act_names]
+    
+    axes[1].bar(x_pos - width/2, time_A, width, yerr=std_tA, label='Mạng nông (3 layers)', capsize=5, color='#55a868')
+    axes[1].bar(x_pos + width/2, time_B, width, yerr=std_tB, label='Mạng sâu (8 layers)', capsize=5, color='#dd8452')
+    axes[1].set_ylabel('Thời gian huấn luyện (giây)')
+    axes[1].set_title('Thời gian huấn luyện theo Độ sâu mạng')
+    axes[1].set_xticks(x_pos)
+    axes[1].set_xticklabels(act_names)
+    axes[1].legend()
+    axes[1].grid(axis='y', linestyle='--', alpha=0.7)
+    
+    # 3) Gradient (Layer cuối)
+    grad_A = [np.mean([r['history']['grad_stats'][-1][-1]['mean_abs'] for r in results_shallow if r['activation'] == a]) for a in act_names]
+    grad_B = [np.mean([r['history']['grad_stats'][-1][-1]['mean_abs'] for r in results_deep if r['activation'] == a]) for a in act_names]
+    
+    axes[2].bar(x_pos - width/2, grad_A, width, label='Mạng nông (3 layers)', color='#8172b2')
+    axes[2].bar(x_pos + width/2, grad_B, width, label='Mạng sâu (8 layers)', color='#937860')
+    axes[2].set_ylabel('Mean Absolute Gradient (Layer Output)')
+    axes[2].set_title('Gradient tại Output Layer')
+    axes[2].set_xticks(x_pos)
+    axes[2].set_xticklabels(act_names)
+    axes[2].set_yscale('log')
+    axes[2].legend()
+    axes[2].grid(axis='y', linestyle='--', alpha=0.7)
+    
+    fig.suptitle(title, fontsize=16)
+    plt.tight_layout()
+    if save_name: plt.savefig(f'outputs/{save_name}')
+    plt.close()
