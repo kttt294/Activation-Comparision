@@ -1,4 +1,4 @@
-# So sánh ảnh hưởng của hàm kích hoạt đến quá trình huấn luyện
+# So sánh ảnh hưởng của hàm kích hoạt đến quá trình huấn luyện mạng nơ-ron
 
 Đây là mã nguồn cho bài tập lớn môn **Nhập môn Trí tuệ Nhân tạo**. Dự án tập trung vào việc nghiên cứu, cài đặt và phân tích ảnh hưởng của 4 hàm kích hoạt phổ biến: **Sigmoid, Tanh, ReLU, và Leaky ReLU** đối với hiệu suất và độ ổn định của mạng Multi-Layer Perceptron (MLP) khi huấn luyện trên tập dữ liệu hình ảnh **MNIST**.
 
